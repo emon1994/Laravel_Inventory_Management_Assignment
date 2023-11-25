@@ -1,0 +1,22 @@
+.card{
+    border-radius: 0!important;
+    }
+.card-img-top{
+     border-radius: 0%!important;
+    }
+.card-img-top{
+    height: 250px;
+    }
+.btn-success{
+    border-radius: 0!important;
+    }
+.price{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    padding: 5px;
+    align-items: center;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
