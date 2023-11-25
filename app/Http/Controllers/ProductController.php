@@ -16,7 +16,14 @@ class ProductController extends Controller
         return view('welcome');
     }
     public function add_product(){
-        return view('add-product');
+        if(FacadesAuth::id())
+        {
+            
+            return view('add-product');
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     public function store_product(Request $request){
@@ -35,12 +42,20 @@ class ProductController extends Controller
             $data=Product::all();
             return view('product',compact('data'));
         }
+        else{
+            return redirect('/');
+        }
        
     }
 
     public function edit_product($id){
-        $data=Product::find($id);
-        return view('edit-product', compact('data'));
+        if(FacadesAuth::id()){
+            $data=Product::find($id);
+            return view('edit-product', compact('data'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     public function update_product(Request $request,$id){

@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,13 +15,16 @@ use App\Http\Controllers\ProductController;
 |
 */
 Route::get('/',[ProductController::class, 'index']);
-Route::get('/product',[ProductController::class, 'show_product']);
 
-Route::get('/add-product',[ProductController::class, 'add_product']);
-Route::post('/store-product',[ProductController::class, 'store_product']);
-Route::get('/edit-product/{id}',[ProductController::class, 'edit_product']);
-Route::post('/update-product/{id}',[ProductController::class, 'update_product']);
-Route::get('/delete-product/{id}',[ProductController::class, 'delete_product']);
+
+Route::middleware('auth')->group(function(){
+    Route::get('/product',[ProductController::class, 'show_product']);
+    Route::get('/add-product',[ProductController::class, 'add_product']);
+    Route::post('/store-product',[ProductController::class, 'store_product']);
+    Route::get('/edit-product/{id}',[ProductController::class, 'edit_product']);
+    Route::post('/update-product/{id}',[ProductController::class, 'update_product']);
+    Route::get('/delete-product/{id}',[ProductController::class, 'delete_product']);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
