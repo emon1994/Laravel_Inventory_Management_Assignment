@@ -12,18 +12,8 @@ use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class ProductController extends Controller
 {
-    public function index(){
-        return view('welcome');
-    }
     public function add_product(){
-        if(FacadesAuth::id())
-        {
-            
-            return view('add-product');
-        }
-        else{
-            return redirect('/');
-        }
+        return view('add-product');
     }
 
     public function store_product(Request $request){
@@ -38,24 +28,13 @@ class ProductController extends Controller
     }
 
     public function show_product(){
-        if(FacadesAuth::id()){
-            $data=Product::all();
-            return view('product',compact('data'));
-        }
-        else{
-            return redirect('/');
-        }
-       
+        $data=Product::all();
+        return view('product',compact('data'));
     }
 
     public function edit_product($id){
-        if(FacadesAuth::id()){
-            $data=Product::find($id);
-            return view('edit-product', compact('data'));
-        }
-        else{
-            return redirect('/');
-        }
+        $data=Product::find($id);
+        return view('edit-product', compact('data'));
     }
 
     public function update_product(Request $request,$id){

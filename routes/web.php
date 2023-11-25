@@ -14,17 +14,17 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',[ProductController::class, 'index']);
+Route::get('/',function(){
+    return view('welcome');
+})->middleware('guest');
 
+Route::get('/product',[ProductController::class, 'show_product'])->middleware('auth');
+Route::get('/add-product',[ProductController::class, 'add_product'])->middleware('auth');
+Route::post('/store-product',[ProductController::class, 'store_product']);
+Route::get('/edit-product/{id}',[ProductController::class, 'edit_product'])->middleware('auth');
+Route::post('/update-product/{id}',[ProductController::class, 'update_product']);
+Route::get('/delete-product/{id}',[ProductController::class, 'delete_product']);
 
-Route::middleware('auth')->group(function(){
-    Route::get('/product',[ProductController::class, 'show_product']);
-    Route::get('/add-product',[ProductController::class, 'add_product']);
-    Route::post('/store-product',[ProductController::class, 'store_product']);
-    Route::get('/edit-product/{id}',[ProductController::class, 'edit_product']);
-    Route::post('/update-product/{id}',[ProductController::class, 'update_product']);
-    Route::get('/delete-product/{id}',[ProductController::class, 'delete_product']);
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
