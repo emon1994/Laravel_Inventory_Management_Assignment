@@ -20,11 +20,11 @@ A basic Inventory Management System (IMS) with Laravel. In this project, i have 
 ## Installation
 It's just like any other Laravel project.
 
-*Clone the repo https://github.com/emon1994/Laravel_Inventory_Management_Assignment.git
-*Run composer install.
-*Save as the .env.example to .env and set your database information
-*Run  php artisan key:generate to generate the app key
-*Run npm install
-*Run $ php artisan migrate:fresh --seed
-*Run php artisan serve.
-Done!
+* Clone the repo https://github.com/emon1994/Laravel_Inventory_Management_Assignment.git
+* Run composer install.
+* Save as the .env.example to .env and set your database information
+* Run  php artisan key:generate to generate the app key
+* Run npm install
+* Run $ php artisan migrate:fresh --seed
+* Run php artisan serve.
+  Done!
